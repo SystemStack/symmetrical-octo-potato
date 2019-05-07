@@ -1,0 +1,104 @@
+.App {
+  text-align: center;
+  margin: 15px;
+  max-height: 100%;
+  /*position: absolute;*/
+  top: 0;
+} .App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+} .App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+} .App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+* {box-sizing: border-box;}
+.wrapper {
+  min-width: 100%;
+  margin: 0 auto;
+} .wrapper > div {
+  border: 1px solid black;
+  padding: 0em;
+  /*color: #d9480f;*/
+} .wrapper {
+  display: grid;
+  grid-template-columns: 3 1fr;
+  grid-gap: 3px;
+  grid-auto-rows: minmax(100%, auto);
+}
+
+.header {
+  grid-column: 1 / 10;
+  grid-row: 1 / 2;
+  background-color: grey;
+} .statistics {
+  grid-column: 1 / 4;
+  grid-row: 1 / 2;
+  background-color: turquoise;
+}
+
+.body {
+  grid-column: 1 / 10;
+  grid-row: 2 / 9;
+  background-color: #F9DEE3;
+} .clock{
+  grid-column: 4 / 6;
+  grid-row: 3 / 4;
+  background-color: #4BDCD3;
+} .friendcat {
+  grid-column: 3 / 4;
+  grid-row: 6 / 8;
+  background-color: lightgrey;
+} .enemycat {
+  grid-column: 6 / 9;
+  grid-row: 6 / 7;
+  background-color: lightgrey;
+} 
+
+
+
+.rightcontainer {
+  grid-column: 10 / 12 ;
+  grid-row: 1 / 10;
+  max-height: 100%;
+  background-color: #9F9FE3;
+} .leftswitch {
+  grid-column: 10 / 11 ;
+  grid-row: 2 / 3;
+  background-color: #94F294;
+} .rightswitch {
+  grid-column: 11 / 12 ;
+  grid-row: 2 / 3;
+  background-color: #B1C388;
+} .catpaw {
+  grid-column: 10 / 12 ;
+  grid-row: 3 / 7;
+  background-color: #C3EBBA;
+} .upgrades {
+  grid-column: 10 / 12 ;
+  grid-row: 7 / 9;
+  background-color: #DAB3D6;
+}
+
+.footer {
+  grid-column: 1 / 10;
+  grid-row: 9 / 9;
+  background-color: #DAFFD6;
+}

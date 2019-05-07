@@ -9,13 +9,13 @@ contract TestPool {
   function testInitialBalanceUsingDeployedContract() public {
     Pool pool = Pool(DeployedAddresses.Pool());
     uint expected = 0;
-    Assert.equal(pool.getBalance(tx.origin), expected, "Pool should have a 0 balance initially");
+    Assert.equal(expected, pool.getBalance(tx.origin), "Pool should have a 0 balance initially");
   }
 
   function testInitialBalanceWithNewPool() public {
     Pool pool = new Pool();
     uint expected = 0;
-    Assert.equal(pool.getBalance(tx.origin), expected, "Pool should have a 0 balance initially");
+    Assert.equal(expected, pool.getBalance(tx.origin), "Pool should have a 0 balance initially");
   }
 
   function testIncreasePool() public {
@@ -25,6 +25,6 @@ contract TestPool {
       pool.increasePool(tx.origin);
     }
     uint actual = pool.getBalance(tx.origin);
-    Assert.equal(actual, expected, "Pool should have a balance of 5 after 5 clicks");
+    Assert.equal(expected, actual, "Pool should have a balance of 5 after 5 clicks");
   }
 }

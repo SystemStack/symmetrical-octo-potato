@@ -9,7 +9,7 @@ WIP
 Compile contracts: `truffle compile`  
 Migrate contracts: `truffle migrate`  
 Test contracts:    `truffle test`  
-### Usage  
+
 Console 1:  
 `truffle watch`  
 Console 2:  
@@ -19,3 +19,9 @@ Console 2:
 code   
 ...  
 `test`  
+
+### Usage  
+`cd client`  
+`npm run start`  
+connect a wallet with metamask
+
