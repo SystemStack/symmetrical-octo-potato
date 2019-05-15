@@ -27,9 +27,7 @@ class App extends Component {
       this.setState({ web3, accounts, contract: instance }, this.run);
     } catch (error) {
       // Catch any errors for any of the above operations.
-      alert(
-        `Failed to load web3, accounts, or contract. Check console for details.`,
-        );
+      alert('Failed to load web3, accounts, or contract. Check console for details.');
       console.error(error);
     }
   };
@@ -52,21 +50,21 @@ class App extends Component {
     }
     return (
       <div className='App' >
-        <div class="wrapper">
-          <div class="header">header</div>
-          <div class="statistics">
-        <div>The stored value is: {this.state.storageValue}</div>
+        <div className="wrapper">
+          <div className="header">header</div>
+          <div className="statistics">
+            <div>The stored value is: {this.state.storageValue}</div>
           </div>
-          <div class="footer">COPYRIGHT-COMPANY©</div>
-          <div class="body">body</div>
-          <div class="clock">clock</div>
-          <div class="rightcontainer">rightcontainer</div>
-          <div class="leftswitch">share</div>
-          <div class="rightswitch">steal</div>
-          <div class="catpaw">+1</div>
-          <div class="upgrades">upgrades</div>
-          <div class="friendcat">friendcat</div>
-          <div class="enemycat">enemycat</div>
+          <div className="footer">COPYRIGHT-COMPANY©</div>
+          <div className="body">body</div>
+          <div className="clock">clock</div>
+          <div className="rightcontainer">rightcontainer</div>
+          <div className="leftswitch">share</div>
+          <div className="rightswitch">steal</div>
+          <div className="catpaw">+1</div>
+          <div className="upgrades">upgrades</div>
+          <div className="friendcat">friendcat</div>
+          <div className="enemycat">enemycat</div>
         </div>
       </div>
     );

@@ -1,5 +1,5 @@
-const Pool = artifacts.require("Pool");
-const SimpleStorage = artifacts.require("./SimpleStorage.sol");
+const Pool = artifacts.require("./Pool");
+const SimpleStorage = artifacts.require("./SimpleStorage");
 
 module.exports = function(deployer) {
   deployer.deploy(Pool);
