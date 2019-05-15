@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Cat from './components/Cat'
 import SimpleStorageContract from "./contracts/SimpleStorage.json";
 import getWeb3 from "./utils/getWeb3";
 import "./App.css";
@@ -34,15 +35,28 @@ class App extends Component {
 
   run = async () => {
     const { accounts, contract } = this.state;
-
-    await contract.methods.set(100).send({ from: accounts[0] });
+    //@David::
+    // this works but its a nuisance to accept the transaction every time
+    /*await contract.methods.set(100).send({ from: accounts[0] });
 
     // Get the value from the contract to prove it worked.
     const response = await contract.methods.get().call();
 
     // Update state with the result.
-    this.setState({ storageValue: response });
+    this.setState({ storageValue: response });*/
+    await this.GetCat(50)
+    this.setState({ storageValue: 100 });
   };
+
+  GetCat = async (catID) => {
+    const route = `https://api.cryptokitties.co/kitties/${catID}`;
+    fetch(route).then(response=>{
+      console.log(response);
+    })
+    // this.setState({ friencat: response });
+  };
+
+
 
   render() {
     if (!this.state.web3) {
@@ -63,8 +77,8 @@ class App extends Component {
           <div className="rightswitch">steal</div>
           <div className="catpaw">+1</div>
           <div className="upgrades">upgrades</div>
-          <div className="friendcat">friendcat</div>
-          <div className="enemycat">enemycat</div>
+          <Cat className="friendcat" />
+          <Cat className="enemycat" />
         </div>
       </div>
     );
