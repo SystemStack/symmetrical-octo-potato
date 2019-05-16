@@ -22,7 +22,7 @@ class Cat extends Component {
 
   render() {
     return (
-        <div className={this.props.className}>test</div>
+        <div className={this.props.className}>{this.props.className}</div>
     );
   }
 }

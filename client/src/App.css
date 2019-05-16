@@ -44,14 +44,17 @@
   grid-auto-rows: minmax(100%, auto);
 }
 
-.header {
+.statistics {
+  text-align: left;
   grid-column: 1 / 10;
   grid-row: 1 / 2;
-  background-color: grey;
-} .statistics {
-  grid-column: 1 / 4;
-  grid-row: 1 / 2;
   background-color: turquoise;
+}
+.statistics span{
+  justify-content: space-evenly;
+  display:block;
+  float:left;
+  width:40%;
 }
 
 .body {
