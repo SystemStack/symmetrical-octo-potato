@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 
 class Upgrades extends Component {
-  state = { 
-  };
-
-  componentDidMount = async () => {
-    console.log(this.props);
-
-  };
+  constructor(props){
+    this.state = {};
+  }
+  
+  componentDidMount = async () => {};
 
   run = async () => {
     const { } = this.state;

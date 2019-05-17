@@ -1,17 +1,15 @@
 import React, { Component } from "react";
 
 class Clock extends Component {
-  state = { 
-  };
-
-  componentDidMount = async () => {
-    console.log(this.props);
-
-  };
+  constructor(props){ 
+    super(props);
+    this.state = {
+      secondsRemaing: 0
+    };
+  }
 
   run = async () => {
     const { } = this.state;
-
     this.setState({  });
   };
 

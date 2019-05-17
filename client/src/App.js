@@ -10,20 +10,23 @@ import PoolContract from "./contracts/Pool.json";
 import "./App.css";
 
 class App extends Component {
-  state = { 
-    storageValue: 0,
-    web3: null, 
-    accounts: null, 
-    contract: null,
-    statistics: {
-      a:1,
-      b:2,
-      c:3,
-      d:4,
-      e:5,
-      f:6
-    }
-  };
+  constructor(props) {
+    super(props);
+    this.state = { 
+      storageValue: 0,
+      web3: null, 
+      accounts: null, 
+      contract: null,
+      statistics: {
+        a:1,
+        b:2,
+        c:3,
+        d:4,
+        e:5,
+        f:6
+      }
+    };
+  }
 
   componentDidMount = async () => {
     try {
@@ -74,15 +77,6 @@ class App extends Component {
       },
     });
   };
-
-  GetCat = async (catID) => {
-    const route = `https://api.cryptokitties.co/kitties/${catID}`;
-    fetch(route).then( response => {
-      console.log(response);
-    });
-    // this.setState({ friencat: response });
-  };
-
 
 
   render() {
