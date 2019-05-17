@@ -82,14 +82,23 @@
   grid-row: 1 / 10;
   max-height: 100%;
   background-color: #9F9FE3;
-} .leftswitch {
-  grid-column: 10 / 11 ;
+} .switch {
+  grid-column: 10 / 12 ;
   grid-row: 2 / 3;
+  -webkit-transition-property: background-color;
+  -moz-transition-property: background-color;
+  -o-transition-property: background-color;
+  -ms-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  transition-duration: 1s;
+} .stealswitch {
+  background-color: red;
+} .shareswitch {
   background-color: #94F294;
-} .rightswitch {
-  grid-column: 11 / 12 ;
-  grid-row: 2 / 3;
-  background-color: #B1C388;
 } .catpaw {
   grid-column: 10 / 12 ;
   grid-row: 3 / 7;

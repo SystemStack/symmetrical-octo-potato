@@ -1,13 +1,15 @@
 import React, { Component } from "react";
-
+import getWeb3 from "../utils/getWeb3";
+import PoolContract from "../contracts/Pool.json";
 // userprofile: https://www.cryptokitties.co/profile/0xbe94e46560ab7c329d356bb47ca4b6bcf6b450f3
 // should only be able to see cats from their profile
 class Cat extends Component {
   constructor(props) {
       super(props);
+      console.log(props);
       this.state = {
         maxCatID:1565964,
-        ID: 1,
+        ID: Math.floor(Math.random()*100000),
         name: '',
         svgURL: '',
         ownerID: '',
@@ -66,7 +68,7 @@ class Cat extends Component {
     }).catch(err => {
       alert('cat does not exist');
     });
-  }; 
+  };
 
   render() {
     return(

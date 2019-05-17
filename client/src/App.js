@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import getWeb3 from "./utils/getWeb3";
 // Components
 import Cat from './components/Cat';
-import Statistics from './components/Statistics';
+import CatPaw from './components/CatPaw';
 import Clock from './components/Clock';
+import Statistics from './components/Statistics';
+import Switch from './components/Switch';
+
 // Contracts
 import SimpleStorageContract from "./contracts/SimpleStorage.json";
 import PoolContract from "./contracts/Pool.json";
@@ -13,7 +16,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { 
+      isSharing: true,
+      switchText: 'Share',
       storageValue: 0,
+      waitTime: 0,
       web3: null, 
       accounts: null, 
       contract: null,
@@ -38,15 +44,25 @@ class App extends Component {
 
       // Get the contract instance.
       const networkId = await web3.eth.net.getId();
-      const deployedNetwork = SimpleStorageContract.networks[networkId];
-      const instance = new web3.eth.Contract(
+      const simpleStorageNetwork = SimpleStorageContract.networks[networkId];
+      const simpleStorageInstance = new web3.eth.Contract(
         SimpleStorageContract.abi,
-        deployedNetwork && deployedNetwork.address,
+        simpleStorageNetwork && simpleStorageNetwork.address,
+      );
+      const poolNetwork = PoolContract.networks[networkId];
+      const poolInstance = new web3.eth.Contract(
+        PoolContract.abi,
+        poolNetwork && poolNetwork.address,
       );
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
-      this.setState({ web3, accounts, contract: instance }, this.run);
+      this.setState({
+        web3: web3,
+        accounts:accounts,
+        simpleStorageContract: simpleStorageInstance,
+        poolContract: poolInstance 
+      }, this.run);
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert('Failed to load web3, accounts, or contract. Check console for details.');
@@ -55,7 +71,13 @@ class App extends Component {
   };
 
   run = async () => {
-    const { accounts, contract } = this.state;
+    const { 
+      web3,
+      accounts,
+      contract,
+      simpleStorageContract,
+      poolContract
+    } = this.state;
     // await contract.methods.set(100).send({ from: accounts[0] });
 
     // Get the value from the contract to prove it worked.
@@ -75,6 +97,10 @@ class App extends Component {
         e:5,
         f:6
       },
+      web3: web3,
+      accounts: accounts,
+      simpleStorageContract: simpleStorageContract,
+      poolContract: poolContract,
     });
   };
 
@@ -88,18 +114,21 @@ class App extends Component {
         <div className="wrapper">
           <Statistics className="statistics"
                       stats={this.state.statistics} />
-          
           <div className="body">body</div>
-          <Clock className="clock" />
-          <Cat className="friendcat" />
-          <Cat className="enemycat" />
-
+          <Clock className="clock"
+                 wait={this.waitTime} />
+          <Cat className="friendcat"
+               web3={this.state.web3}
+               contract={this.state.poolContract} />
+          <Cat className="enemycat"
+               web3={this.state.web3}
+               contract={this.state.poolContract} />
           <div className="rightcontainer">rightcontainer</div>
-          <div className="leftswitch">share</div>
-          <div className="rightswitch">steal</div>
-          <div className="catpaw">+1</div>
+          <Switch className="switch shareswitch"
+                  isSharing={this.state.isSharing}
+                  switchText={this.state.switchText} />
+          <CatPaw className="catpaw" />
           <div className="upgrades"></div>
-          
           <div className="footer">COPYRIGHT-COMPANY©</div>
         </div>
       </div>
