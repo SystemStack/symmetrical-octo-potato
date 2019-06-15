@@ -1,21 +1,29 @@
 import React, { Component } from "react";
 
 class Upgrades extends Component {
+
   constructor(props){
-    this.state = {};
+    super(props);
+    // this.state.upgrades = props.upgrades;
+    this.state = {
+      upgrades:props.upgrades
+    };
   }
-  
-  componentDidMount = async () => {};
+
+  componentDidMount = async () => {
+    console.log(this.state.upgrades)
+  };
 
   run = async () => {
-    const { } = this.state;
-
-    this.setState({  });
+    const { ff } = this.state;
+    console.log(ff);
   };
 
   render() {
     return (
-      <div className={this.props.className}>upgrades</div>
+      <div className={this.props.className}>
+        upgrades
+      </div>
     );
   }
 }
