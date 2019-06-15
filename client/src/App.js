@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import getWeb3 from "./utils/getWeb3";
 // Components
+import Apartment from './components/Apartment';
 import Cat from './components/Cat';
 import CatPaw from './components/CatPaw';
 import Clock from './components/Clock';
+import Footer from './components/Footer';
 import Statistics from './components/Statistics';
 import Switch from './components/Switch';
-import Apartment from './components/Apartment';
 import Upgrades from './components/Upgrades';
 // CSS components
 // import Col from 'react-bootstrap/Col';
@@ -106,34 +107,30 @@ class App extends Component {
       return <div>Loading Web3, accounts, and contract...</div>;
     }
     return (
-      <div className="App">
-        <div className="wrapper">
-
-          <Row>
-            <div className="col-md-12">
-              <Statistics
-                className="statistics"
-                stats={this.state.statistics} />
+      <body className="App container border border-dark col-auto">
+        <Row className="border row border-dark col-auto">
+            <div className="col-10 border border-dark no-float">
+                <div className="col-auto border border-dark">
+                    <Statistics
+                      className="statistics"
+                      stats={this.state.statistics} />
+                </div>
+                <div className="col-auto border border-dark">
+                    <Apartment
+                      className="apartment"
+                      upgrades={this.state.upgrades}/>
+                </div>
+                <div className="col-auto border border-dark">
+                    <Footer
+                      className="footer"/>
+                </div>
             </div>
-          </Row>
 
-          <Row className="row">
-            <div className="col-md-10">
-              <Apartment
-                className="apartment"
-                upgrades={this.state.upgrades}/>
+            <div className="col-2 border border-dark">
+              <CatPaw />
             </div>
-          </Row>
-
-          <Row className="row">
-            <div className="col-md-12">
-              <p>footer</p>
-            </div>
-          </Row>
-
-
-        </div>
-      </div>
+        </Row>
+      </body>
     );
   }
 }
