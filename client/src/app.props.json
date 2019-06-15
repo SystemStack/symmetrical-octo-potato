@@ -1,0 +1,39 @@
+{
+  "accounts": null,
+  "contract": null,
+  "isSharing": true,
+  "storageValue": 0,
+  "switchText": "Share",
+  "waitTime": 0,
+  "web3": null,
+  "statistics": {
+    "a": 1,
+    "b": 2,
+    "c": 3,
+    "d": 4,
+    "e": 5,
+    "f": 6
+  },
+  "Upgrades": {
+    "Book_Shelf": 0,
+    "Books": 0,
+    "Carpet": 0,
+    "Chair": 0,
+    "Clock": 0,
+    "Computer": 0,
+    "Couch": 0,
+    "Desk": 0,
+    "Fridge": 0,
+    "Kitchen_Stuff": 0,
+    "Lamp": 0,
+    "Lounge_Chair": 0,
+    "More_Items": 0,
+    "Plant": 0,
+    "Planter": 0,
+    "Room": 0,
+    "Stools": 0,
+    "Table": 0,
+    "Wall_Art_Left": 0,
+    "Wall_Art_Right": 0
+  }
+}

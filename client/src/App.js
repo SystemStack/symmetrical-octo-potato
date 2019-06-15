@@ -6,32 +6,25 @@ import CatPaw from './components/CatPaw';
 import Clock from './components/Clock';
 import Statistics from './components/Statistics';
 import Switch from './components/Switch';
+import Apartment from './components/Apartment';
+import Upgrades from './components/Upgrades';
+// CSS components
+// import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 // Contracts
 import SimpleStorageContract from "./contracts/SimpleStorage.json";
 import PoolContract from "./contracts/Pool.json";
 import "./App.css";
 
+//constants
+import  AppDefaults from './app.props.json';
+
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      isSharing: true,
-      switchText: 'Share',
-      storageValue: 0,
-      waitTime: 0,
-      web3: null, 
-      accounts: null, 
-      contract: null,
-      statistics: {
-        a:1,
-        b:2,
-        c:3,
-        d:4,
-        e:5,
-        f:6
-      }
-    };
+  this.state = AppDefaults;
+
   }
 
   componentDidMount = async () => {
@@ -57,6 +50,7 @@ class App extends Component {
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
+      console.log(this.state)
       this.setState({
         web3: web3,
         accounts:accounts,
@@ -76,7 +70,8 @@ class App extends Component {
       accounts,
       contract,
       simpleStorageContract,
-      poolContract
+      poolContract,
+      upgrades
     } = this.state;
     // await contract.methods.set(100).send({ from: accounts[0] });
 
@@ -101,6 +96,7 @@ class App extends Component {
       accounts: accounts,
       simpleStorageContract: simpleStorageContract,
       poolContract: poolContract,
+      upgrades: upgrades
     });
   };
 
@@ -112,24 +108,30 @@ class App extends Component {
     return (
       <div className="App">
         <div className="wrapper">
-          <Statistics className="statistics"
-                      stats={this.state.statistics} />
-          <div className="body">body</div>
-          <Clock className="clock"
-                 wait={this.waitTime} />
-          <Cat className="friendcat"
-               web3={this.state.web3}
-               contract={this.state.poolContract} />
-          <Cat className="enemycat"
-               web3={this.state.web3}
-               contract={this.state.poolContract} />
-          <div className="rightcontainer">rightcontainer</div>
-          <Switch className="switch shareswitch"
-                  isSharing={this.state.isSharing}
-                  switchText={this.state.switchText} />
-          <CatPaw className="catpaw" />
-          <div className="upgrades"></div>
-          <div className="footer">COPYRIGHT-COMPANY©</div>
+
+          <Row>
+            <div className="col-md-12">
+              <Statistics
+                className="statistics"
+                stats={this.state.statistics} />
+            </div>
+          </Row>
+
+          <Row className="row">
+            <div className="col-md-10">
+              <Apartment
+                className="apartment"
+                upgrades={this.state.upgrades}/>
+            </div>
+          </Row>
+
+          <Row className="row">
+            <div className="col-md-12">
+              <p>footer</p>
+            </div>
+          </Row>
+
+
         </div>
       </div>
     );

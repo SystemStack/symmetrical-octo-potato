@@ -1,17 +1,23 @@
 import React, { Component } from "react";
+import { ReactComponent as ApartmentSVG } from '../Apartment.svg';
 
-class Upgrades extends Component {
+class Apartment extends Component {
 
   constructor(props){
     super(props);
     // this.state.upgrades = props.upgrades;
     this.state = {
-      upgrades:props.upgrades
+      // upgrades:props.
     };
+    this.idSuffix = "_xA0_Image";
   }
-
+  
   componentDidMount = async () => {
-    console.log(this.state.upgrades)
+
+  };
+
+  upgradesToRender = (upgrades) => {
+
   };
 
   run = async () => {
@@ -21,11 +27,11 @@ class Upgrades extends Component {
 
   render() {
     return (
-      <div className={this.props.className}>
-        upgrades
-      </div>
+      <ApartmentSVG
+        className={this.props.className}
+        visibility='Hidden' />
     );
   }
 }
 
-export default Upgrades;
+export default Apartment;
