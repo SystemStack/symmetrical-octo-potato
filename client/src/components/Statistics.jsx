@@ -5,35 +5,13 @@ import React, { Component } from "react";
 class Statistics extends Component {
   constructor(props){
     super(props);
-    this.state = { 
-      // has_cheated: false, /*view-logic only, cheaters should be on the chain*/
-      stats: {a:'', b:'', c:'', d:'', e:'', f:''},
+    this.state = {
+      has_cheated: false,
+      stats: props.stats,
       catID: '',
       catOwner: '',
     };
   }
-
-  componentDidMount = async () => {
-    this.setState({ 
-      // has_cheated: false, /*view-logic only, cheaters should be on the chain*/
-      stats: {
-        a:1,
-        b:2,
-        c:3,
-        d:4,
-        e:5,
-        f:6
-      },
-      catID: '',
-      catOwner: '',
-    }, this.run);
-  };
-
-  componentDidUpdate(prevProps, prevState, snapshot) {}
-
-  run = async () => {
-    const { stats } = this.state;
-  };
 
   render() {
     return (

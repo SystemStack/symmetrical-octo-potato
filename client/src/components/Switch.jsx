@@ -10,10 +10,6 @@ class Switch extends Component {
     };
     this.shareStealSwitch = this.shareStealSwitch.bind(this);
   }
-  
-  componentDidMount = {
-
-  };
 
   shareStealSwitch (event) {
     event.preventDefault();

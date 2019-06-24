@@ -1,31 +1,27 @@
 import React, { Component } from "react";
 import getWeb3 from "./utils/getWeb3";
-// Components
+
+import "./App.css";
+import AppDefaults from './app.props.json';
+
 import Apartment from './components/Apartment';
-import Cat from './components/Cat';
+// import Cat from './components/Cat';
 import CatPaw from './components/CatPaw';
-import Clock from './components/Clock';
+// import Clock from './components/Clock';
 import Footer from './components/Footer';
 import Statistics from './components/Statistics';
 import Switch from './components/Switch';
 import Upgrades from './components/Upgrades';
-// CSS components
-// import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
 // Contracts
 import SimpleStorageContract from "./contracts/SimpleStorage.json";
 import PoolContract from "./contracts/Pool.json";
-import "./App.css";
-
-//constants
-import  AppDefaults from './app.props.json';
 
 class App extends Component {
   constructor(props) {
     super(props);
-  this.state = AppDefaults;
-
+    this.state = AppDefaults;
   }
 
   componentDidMount = async () => {
@@ -49,9 +45,6 @@ class App extends Component {
         poolNetwork && poolNetwork.address,
       );
 
-      // Set web3, accounts, and contract to the state, and then proceed with an
-      // example of interacting with the contract's methods.
-      console.log(this.state)
       this.setState({
         web3: web3,
         accounts:accounts,
@@ -59,8 +52,6 @@ class App extends Component {
         poolContract: poolInstance 
       }, this.run);
     } catch (error) {
-      // Catch any errors for any of the above operations.
-      alert('Failed to load web3, accounts, or contract. Check console for details.');
       console.error(error);
     }
   };
@@ -74,12 +65,9 @@ class App extends Component {
       poolContract,
       upgrades
     } = this.state;
+
     // await contract.methods.set(100).send({ from: accounts[0] });
-
-    // Get the value from the contract to prove it worked.
     // const response = await contract.methods.get().call();
-
-    // Update state with the result.
     // this.setState({ storageValue: response });
     // await this.GetCat(50);
 
@@ -87,50 +75,47 @@ class App extends Component {
       storageValue: 100,
       statistics: {
         a:this.state.storageValue,
-        b:2,
-        c:3,
-        d:4,
-        e:5,
-        f:6
       },
       web3: web3,
       accounts: accounts,
       simpleStorageContract: simpleStorageContract,
       poolContract: poolContract,
-      upgrades: upgrades
     });
   };
 
+  switchUpdate(items){
+    console.log(items);
+  }
 
   render() {
     if (!this.state.web3) {
       return <div>Loading Web3, accounts, and contract...</div>;
     }
     return (
-      <body className="App container border border-dark col-auto">
-        <Row className="border row border-dark col-auto">
-            <div className="col-10 border border-dark no-float">
-                <div className="col-auto border border-dark">
-                    <Statistics
-                      className="statistics"
-                      stats={this.state.statistics} />
-                </div>
-                <div className="col-auto border border-dark">
-                    <Apartment
-                      className="apartment"
-                      upgrades={this.state.upgrades}/>
-                </div>
-                <div className="col-auto border border-dark">
-                    <Footer
-                      className="footer"/>
-                </div>
-            </div>
-
-            <div className="col-2 border border-dark">
-              <CatPaw />
-            </div>
-        </Row>
-      </body>
+      <Row className="App container col-md-12 row">
+        <div className="col-md-10 no-float">
+          <Statistics
+            className="statistics col-md-auto"
+            stats={this.state.statistics}/>
+          <Apartment
+            className="apartment col-md-auto"
+            upgrades={this.state.aptUpgrades}/>
+          <Footer
+            className="footer col-md-auto"/>
+        </div>
+        <div className="rightcontainer col-md-2 float-left">
+          <Switch
+            className="shareswitch switch col-md-12 no-float"
+            switchText={this.state.switchText}
+            onStatusUpdate={this.switchUpdate}/>
+          <CatPaw
+            className="catpaw col-md-12 no-float"
+            isSharing={this.state.switchSharing}/>
+          <Upgrades
+            className="upgrades col-md-12 no-float"
+            upgrades={this.state.itemUpgrades}/>
+        </div>
+      </Row>
     );
   }
 }
